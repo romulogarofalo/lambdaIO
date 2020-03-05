@@ -41,25 +41,3 @@ deletePostSpecificR idPost = do
     _ <- runDB $ get404 idPost
     runDB $ delete idPost
     sendStatusJSON noContent204 (object [])
-
-getPostPageR :: Handler Html
-getPostPageR = do
-    defaultLayout $ [whamlet|
-        <div class="row">
-            <div class="col-2">
-                <img class="img-fluid bottom" src=@{StaticR images_religioso_04_png}>
-            <div class="col-8">
-                <form method="POST" action=@{CordecSignupR}>
-                    <div class="form-group">
-                        <label for="email">Email: 
-                        <input id="email" class="form-control border-1 border-dark rounded-0" type="email" name="email" required>
-                    <div class="form-group">
-                        <label for="nome">Nome: 
-                        <input id="nome" class="form-control border-1 border-dark rounded-0" type="text" name="nome">
-                    <div class="form-group">
-                        <label for="senha">Senha:
-                        <input id="senha" class="form-control border-1 border-dark rounded-0" type="password" name="senha" required>
-                    <button class="btn border-1 border-dark rounded-0">Cadastrar
-            <div class="col-2">
-                <img class="img-fluid bottom" src=@{StaticR images_maria_bonita_05_png}>
-    |]
